@@ -1,25 +1,26 @@
-import { useEffect, useRef, useState } from 'react';
-import { Text, TouchableOpacity, View, Platform } from 'react-native';
-import Video, { OnBufferData } from 'react-native-video';
+import {useEffect, useRef, useState} from 'react';
+import {Text, TouchableOpacity, View, Platform} from 'react-native';
+import Video, {OnBufferData} from 'react-native-video';
 import Orientation from 'react-native-orientation-locker';
-import { ChevronLeft, Volume2, VolumeX } from 'lucide-react-native';
-import { NavigationProp } from '@react-navigation/native';
-import { useUrls } from '@/services/api/get-url';
-import { VLCPlayer } from 'react-native-vlc-media-player';
+import {ChevronLeft, Volume2, VolumeX} from 'lucide-react-native';
+import {NavigationProp} from '@react-navigation/native';
+import {useUrls} from '@/services/api/get-url';
+import {VLCPlayer} from 'react-native-vlc-media-player';
+import Toast from 'react-native-toast-message';
 
 interface TVProps {
   navigation: NavigationProp<RootTabParamList>;
 }
 
-export const TV: React.FC<TVProps> = ({ navigation }) => {
-  const { data } = useUrls();
+export const TV: React.FC<TVProps> = ({navigation}) => {
+  const {data} = useUrls();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isMuted, setIsMuted] = useState<boolean>(false);
-  const [urlStream, setUrlStream] = useState<string>('')
+  const [urlStream, setUrlStream] = useState<string>('');
   const [isStoped, setIsStoped] = useState<boolean>(false);
   const [volume, setVolume] = useState<number>(60);
   const videoRef = useRef<any>(null);
-  const isAndroidPlatform = Platform.OS === 'android'
+  const isAndroidPlatform = Platform.OS === 'android';
 
   useEffect(() => {
     Orientation.lockToLandscape();
@@ -35,15 +36,15 @@ export const TV: React.FC<TVProps> = ({ navigation }) => {
 
   useEffect(() => {
     if (data) {
-      const urlStream = data.find(({ urls }: any) => urls.typeId == 12).urls.url;
-      setUrlStream(urlStream)
+      const urlStream = data.find(({urls}: any) => urls.typeId == 12).urls.url;
+      setUrlStream(urlStream);
     }
   }, [data]);
 
   useEffect(() => {
     const unsubscribe = navigation.addListener('beforeRemove', () => {
       if (videoRef.current) {
-        videoRef.current.seek(0)
+        videoRef.current.seek(0);
         videoRef.current.dismissFullscreenPlayer?.();
       }
     });
@@ -65,11 +66,18 @@ export const TV: React.FC<TVProps> = ({ navigation }) => {
 
   function onError(error: any) {
     console.log(error);
-    navigation.goBack()
+
+    Toast.show({
+      type: 'error',
+      text1: 'Erro ao acessar a Tv',
+      text2: 'Por favor, cheque seu streaming',
+    });
+
+    navigation.goBack();
   }
 
   function handleLoad(load: any) {
-    console.log(load)
+    console.log(load);
     setIsLoading(true);
   }
 
@@ -79,10 +87,9 @@ export const TV: React.FC<TVProps> = ({ navigation }) => {
 
   function stopLive() {
     if (isAndroidPlatform) {
-      navigation.goBack()
-    }
-    else {
-      setVolume(0), setIsStoped(true)
+      navigation.goBack();
+    } else {
+      setVolume(0), setIsStoped(true);
     }
   }
 
@@ -90,7 +97,9 @@ export const TV: React.FC<TVProps> = ({ navigation }) => {
     <>
       <View className="relative flex items-center justify-center w-full h-full">
         <View
-          className={`absolute z-10 flex items-center justify-center w-full h-full bg-black/50 ${isLoading && 'hidden'}`}>
+          className={`absolute z-10 flex items-center justify-center w-full h-full bg-black/50 ${
+            isLoading && 'hidden'
+          }`}>
           <View className="">
             <Text className="text-black">Carregando...</Text>
           </View>
@@ -124,38 +133,33 @@ export const TV: React.FC<TVProps> = ({ navigation }) => {
               </View>
             </>
           )}
-          {
-            urlStream != ''
-            &&
-            (
-              isAndroidPlatform
-                ?
-                <Video
-                  source={{ uri: urlStream }}
-                  onBuffer={onBuffer}
-                  onError={onError}
-                  onLoad={handleLoad}
-                  ref={videoRef}
-                  muted={isMuted}
-                  fullscreen
-                  resizeMode="stretch"
-                  className="w-full h-full"
-                />
-                :
-                <VLCPlayer
-                  videoAspectRatio="16:9"
-                  style={{ width: '100%', height: '100%' }}
-                  onError={e => onError(e)}
-                  muted={isMuted}
-                  ref={videoRef}
-                  onLoad={handleLoad}
-                  paused={isStoped}
-                  volume={volume}
-                  playInBackground={false}
-                  source={{ uri: urlStream }}
-                />
-            )
-          }
+          {urlStream != '' &&
+            (isAndroidPlatform ? (
+              <Video
+                source={{uri: urlStream}}
+                onBuffer={onBuffer}
+                onError={onError}
+                onLoad={handleLoad}
+                ref={videoRef}
+                muted={isMuted}
+                fullscreen
+                resizeMode="stretch"
+                className="w-full h-full"
+              />
+            ) : (
+              <VLCPlayer
+                videoAspectRatio="16:9"
+                style={{width: '100%', height: '100%'}}
+                onError={e => onError(e)}
+                muted={isMuted}
+                ref={videoRef}
+                onLoad={handleLoad}
+                paused={isStoped}
+                volume={volume}
+                playInBackground={false}
+                source={{uri: urlStream}}
+              />
+            ))}
         </View>
       </View>
     </>
