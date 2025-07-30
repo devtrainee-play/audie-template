@@ -6,18 +6,19 @@ type RouteName =
   | 'News'
   | 'ProfileUser'
   | 'SheetPromotion'
-  | 'Television';
+  | 'Television'
+  | 'Podcast';
 
 type RootTabParamList = {
   MainScreen: undefined;
   WelcomeScreen: undefined;
   Home: undefined;
-  News: { categoryId?: number };
+  News: {categoryId?: number};
   Promotions: undefined;
-  ProfileUser: { refresh: boolean };
+  ProfileUser: {refresh: boolean};
   SheetNews: any;
-  SheetPromotion: { promotiom: Promotiom };
-  PersonalData: { refresh: boolean } | undefined;
+  SheetPromotion: {promotiom: Promotiom};
+  PersonalData: {refresh: boolean} | undefined;
   ManageLevel: undefined;
   SocialMedia: undefined;
   About: undefined;
@@ -25,17 +26,129 @@ type RootTabParamList = {
   BirthdayAndGender: undefined;
   Address: undefined;
   Welcome: undefined;
-  RegisterUser: { phoneNumber: string };
+  RegisterUser: {phoneNumber: string};
   LoginOrRegister: undefined;
-  OTPVerification: { phoneNumber: string };
+  OTPVerification: {phoneNumber: string};
+  Podcast: undefined;
+  Channels: undefined;
+  Episodes: {auth: Auth};
+  SheetEpisode: {episode: Episode};
+  MainPodcast: undefined;
 };
+interface Episode {
+  id: string;
+  title: string;
+  image: string;
+  summary: string;
+  description: string;
+  duration: string;
+  url: string;
+  auth: string;
+  rssId: number;
+}
+interface Auth {
+  rssId: number;
+  title: string;
+  auth: string;
+  image: string;
+  description: string;
+  episodes: number;
+  items: ItemPodcast[];
+}
+interface XmlPodcast {
+  rss: {
+    channel: Channel;
+  };
+}
+interface Channel {
+  title: string | CData;
+  link: string | AtomLink;
+  description: string | CData;
+  language?: string;
+  copyright?: string;
+  lastBuildDate?: string;
+  generator?: string;
+  managingEditor?: string;
+  'atom:link'?: AtomLink | AtomLink[];
+  'itunes:author': string | CData;
+  'itunes:summary': string | CData;
+  'itunes:type': 'episodic' | 'serial';
+  'itunes:owner': ItunesOwner;
+  'itunes:explicit': 'true' | 'false' | 'yes' | 'no';
+  'itunes:category': ItunesCategory | ItunesCategory[];
+  'itunes:image': ItunesImage;
+  'itunes:block'?: 'yes' | 'no';
+  'googleplay:author'?: string;
+  'googleplay:image'?: ItunesImage;
+  'googleplay:category'?: {'@_text': string};
+  image?: Image;
+  item: ItemPodcast[];
+}
+interface ItemPodcast {
+  title: string | CData;
+  link: string;
+  description: string | CData;
+  pubDate: string;
+  guid: string | Guid;
+  enclosure: Enclosure;
+
+  'itunes:duration': string | number;
+  'itunes:summary': string | CData;
+  'itunes:explicit': 'true' | 'false' | 'yes' | 'no';
+  'itunes:image': ItunesImage;
+  'itunes:episodeType': 'full' | 'trailer' | 'bonus';
+  'itunes:episode'?: string | number;
+
+  'dc:creator'?: string | CData;
+}
+type CData = {
+  '#cdata-section': string;
+};
+
+interface Enclosure {
+  '@_url': string;
+  '@_length': string;
+  '@_type': 'audio/mpeg' | 'audio/aac' | 'audio/x-m4a' | string;
+}
+interface ItunesImage {
+  '@_href': string;
+}
+
+interface Image {
+  url: string;
+  title: string | CData;
+  link: string;
+}
+interface ItunesOwner {
+  'itunes:name': string | CData;
+  'itunes:email': string;
+}
+
+interface ItunesCategory {
+  '@_text': string;
+  'itunes:category'?: ItunesCategory;
+}
+
+interface AtomLink {
+  '@_href': string;
+  '@_rel': 'self' | 'hub' | string;
+  '@_type'?: string;
+}
+
+interface Guid {
+  '#text': string;
+  '@_isPermaLink'?: 'true' | 'false';
+}
+interface ItemUrl {
+  id: number;
+  url: string;
+}
 
 interface UserPreferences {
   savedNews: News[];
   firstAccess: boolean;
   themeMode: ColorSchemeSystem | null;
 }
-
 interface ExtraData {
   apiKey: any;
   appName: any;
@@ -111,7 +224,7 @@ interface Promotiom {
 }
 
 interface PlaylistXML {
-  _attributes: { CurrentTime: string };
+  _attributes: {CurrentTime: string};
   Playlist: {
     OnAir: {
       RDS: {
@@ -119,11 +232,11 @@ interface PlaylistXML {
         RadioText: string;
       };
       Break: {
-        Id: { _text: string };
+        Id: {_text: string};
         Op: string;
         SchedTime: string;
         StartedTime: string;
-        Type: { _text: string };
+        Type: {_text: string};
         InsCount: number;
         MusicCount: number;
         Dur: string;
@@ -140,7 +253,7 @@ interface PlaylistXML {
         Dur: string;
         Intro: string | null;
         Bitrate: number;
-        MD5: { _text: string };
+        MD5: {_text: string};
         ID3: {
           Title: string;
           Subtitle: string;
@@ -159,10 +272,10 @@ interface PlaylistXML {
       CurMusic: {
         StartedTime: string;
         Id: string | null;
-        Title: { _text: string };
+        Title: {_text: string};
         Subtitle: string | null;
-        Artist: { _text: string };
-        Album: { _text: string } | null;
+        Artist: {_text: string};
+        Album: {_text: string} | null;
         Track: string | null;
         Publisher: string | null;
         Year: string | null;
@@ -186,8 +299,8 @@ interface PlaylistXML {
             Dur: string;
             Intro: string | null;
             Bitrate: number;
-          }
-        }[]
+          };
+        }[];
       };
       NextMusic: {
         Music: {
