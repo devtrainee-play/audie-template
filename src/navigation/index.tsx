@@ -1,6 +1,6 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { BottomTab } from '../components/BottomTab';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import {BottomTab} from '../components/BottomTab';
 import {
   About,
   Address,
@@ -20,6 +20,11 @@ import {
   OTPVerification,
   TV,
   RegisterUser,
+  Podcast,
+  Channels,
+  Episodes,
+  SheetEpisode,
+  SharedEpisode,
 } from '../screens';
 import React from 'react';
 
@@ -31,6 +36,20 @@ const Navigation = () => {
     return <></>;
   };
 
+  const TabsPodcast: React.FC = () => {
+    return (
+      <Stack.Navigator
+        screenOptions={{
+          headerShown: false,
+        }}>
+        <Stack.Screen name="MainPodcast" component={Podcast} />
+        <Stack.Screen name="Channels" component={Channels} />
+        <Stack.Screen name="Episodes" component={Episodes} />
+        <Stack.Screen name="SheetEpisode" component={SheetEpisode} />
+        <Stack.Screen name="SharedEpisode" component={SharedEpisode} />
+      </Stack.Navigator>
+    );
+  };
   const TabsNavigation: React.FC = () => {
     return (
       <Tab.Navigator
@@ -44,6 +63,7 @@ const Navigation = () => {
         <Tab.Screen name="Promotions" component={Promotions} />
         <Tab.Screen name="Television" component={Television} />
         <Tab.Screen name="News" component={News} />
+        <Tab.Screen name="Podcast" component={TabsPodcast} />
         <Tab.Screen name="ProfileUser" component={ProfileUser} />
       </Tab.Navigator>
     );
@@ -67,7 +87,7 @@ const Navigation = () => {
   };
 
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="MainScreen" component={TabsNavigation} />
       <Stack.Screen name="WelcomeScreen" component={TabsLoginRegister} />
       <Stack.Screen name="SheetNews" component={SheetNews} />
