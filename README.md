@@ -20,7 +20,7 @@ Para iniciar o Metro, execute o seguinte comando a partir do diretório _root_ d
 
 ```bash
 # usando npm
-npm start
+npm run start
 
 # OU usando Yarn
 yarn start
@@ -109,30 +109,35 @@ Aqui está um exemplo de como você pode criar uma seção explicativa em sua do
 
 Certifique-se de preencher o arquivo `.env` corretamente antes de iniciar o projeto. As variáveis abaixo são fundamentais para o funcionamento da aplicação. Aqui está o detalhamento de cada uma delas:
 
-#### **1. AUDIE_API_URL**  
-- **Descrição**: URL base da API do sistema AUDIE.  
-- **Importância**: Todas as requisições relacionadas ao sistema AUDIE utilizam essa URL como ponto de partida. Alterar esse valor pode desconectar a aplicação do servidor correto.  
+#### **1. AUDIE_API_URL**
+
+- **Descrição**: URL base da API do sistema AUDIE.
+- **Importância**: Todas as requisições relacionadas ao sistema AUDIE utilizam essa URL como ponto de partida. Alterar esse valor pode desconectar a aplicação do servidor correto.
 - **Exemplo**:
   ```env
   AUDIE_API_URL=https://audieappapi.playlistsolutions.com/
   ```
 
-#### **2. AUDIE_API_KEY**  
-- **Descrição**: Chave de autenticação para acessar a API do AUDIE.  
-- **Importância**: Sem essa chave, as requisições à API do AUDIE serão recusadas.  
+#### **2. AUDIE_API_KEY**
+
+- **Descrição**: Chave de autenticação para acessar a API do AUDIE.
+- **Importância**: Sem essa chave, as requisições à API do AUDIE serão recusadas.
 - **Exemplo**:
   ```env
   AUDIE_API_KEY=sua-chave-aqui
   ```
 
-#### **3. VAGALUME_API_KEY**  
-- **Descrição**: Chave de API para acessar o serviço de letras de música e metadados do Vagalume.  
-- **Importância**: Necessária para buscar letras, informações e outros dados musicais.  
+#### **3. VAGALUME_API_KEY**
+
+- **Descrição**: Chave de API para acessar o serviço de letras de música e metadados do Vagalume.
+- **Importância**: Necessária para buscar letras, informações e outros dados musicais.
 - **Exemplo**:
   ```env
   VAGALUME_API_KEY=sua-chave-aqui
   ```
+
 #### **3.1 Gerando a VAGALUME_API_KEY**
+
 - **Passo a Passo**:
   1. Acesse o site oficial do [Vagalume API](https://api.vagalume.com.br/).
   2. Acesse a documentação e acessa a aba de **credenciais de autorização** no informativo abaixo clique em **Cadastrar-se** ou faça login caso já tenha uma conta.
@@ -145,16 +150,19 @@ Certifique-se de preencher o arquivo `.env` corretamente antes de iniciar o proj
      VAGALUME_API_KEY=sua-chave-aqui
      ```
 
-#### **4. DISCOGS_KEY e DISCOGS_SECRET**  
-- **Descrição**: Chave e segredo para autenticação no Discogs, uma base de dados de músicas e artistas.  
-- **Importância**: Permite que a aplicação obtenha informações detalhadas sobre álbuns, artistas e faixas.  
+#### **4. DISCOGS_KEY e DISCOGS_SECRET**
+
+- **Descrição**: Chave e segredo para autenticação no Discogs, uma base de dados de músicas e artistas.
+- **Importância**: Permite que a aplicação obtenha informações detalhadas sobre álbuns, artistas e faixas.
 - **Exemplo**:
-  
+
   ```env
   DISCOGS_KEY=sua-chave-aqui
   DISCOGS_SECRET=seu-segredo-aqui
   ```
+
 #### **4.1 Gerando DISCOGS_KEY e DISCOGS_SECRET**
+
 - **Passo a Passo**:
   1. Acesse o site oficial do [Discogs Developers](https://www.discogs.com/developers).
   2. Faça login com sua conta Discogs ou crie uma nova conta, se necessário - **Create an App**.
@@ -168,16 +176,335 @@ Certifique-se de preencher o arquivo `.env` corretamente antes de iniciar o proj
      ```
 
 ### **Passos para Configuração**
+
 - Solicite as chaves de acesso apropriadas com o administrador ou nos respectivos serviços das APIs.
 - Preencha o arquivo `.env` com os valores corretos.
 - Reinicie o servidor de desenvolvimento para que as alterações sejam aplicadas:
-   
-   ```bash
-   npm start --reset-cache
-   ```
+  ```bash
+  npm run reset
+  ```
 
 ### **Importante!**
+
 - **Segurança**: Nunca compartilhe o arquivo `.env` ou exponha suas chaves em repositórios públicos.
 - **Ambientes Diferentes**: Certifique-se de utilizar chaves e URLs específicas para cada ambiente (`dev`, `staging`, `prod`) para evitar configurações erradas.
 
 Seguindo essas instruções, sua aplicação estará pronta para consumir os serviços necessários! 🚀
+
+## **Para desenvolvimento**
+
+### **.env**
+
+É importante ressaltar que o arquivo _.env_ está nomeado como _.env.example_ e que além de configurar os parâmetros dentro do arquivo é importante renomear ele para _.env_
+
+### **babel.config.js**
+
+Para que o projeto seja executado para desenvolvimento primeiramente é preciso configurar o arquivo _babel.config.js_ para que os plugins fiquem de forma certa.
+
+Os plugins devem estar dentro de **plugins:[ ]**.
+Se o plugin so tiver o nome como configuração basta apenas adiciona-lo dentro de **plugins:[ ]** com um virgula no final.
+Caso ele tenha configurações adicionais primeiramente você precisa abrir e fechar colchetes **[ ],** e dentro dele realizar a seguinte configuração _nome-do-plugin ,_ abre e feche chaves **{ }** e dentro das chaves coloque as configurações _config1:val1,_ _config2:val2_.
+
+Segue um exemplo abaixo:
+
+```js
+module.exports = {
+  presets: ['module:@react-native/babel-preset'],
+  plugins: [
+    [
+      'module:react-native-dotenv',
+      {
+        moduleName: '@env',
+        path: '.env',
+        blacklist: null,
+        whitelist: null,
+        safe: false,
+        allowUndefined: true,
+      },
+    ],
+    'nativewind/babel',
+    'react-native-reanimated/plugin',
+    [
+      'module-resolver',
+      {
+        root: ['./src'],
+        alias: {
+          '@': './src',
+        },
+      },
+    ],
+  ],
+};
+```
+
+### Configuração de Universal Links (Deep Linking)
+
+Universal Links (para iOS) e Android App Links (para Android) permitem que links web padrão abram conteúdo específico dentro do seu aplicativo mobile, em vez de apenas o site, proporcionando uma experiência de usuário mais fluida e segura.
+
+#### Android (Android App Links)
+
+Para configurar Android App Links, você precisa estabelecer uma associação verificada entre seu domínio web e seu aplicativo Android.
+
+##### Configuração do Servidor Web
+
+Você precisa ter um domínio próprio em um servidor web (`ex: seu-dominio.com`). Dentro desse domínio, crie um diretório chamado `.well-known` na raiz do seu servidor.
+
+Dentro do diretório .well-known, coloque um arquivo chamado assetlinks.json. Este arquivo deve ser publicamente acessível via HTTPS no caminho exato: https://seu-dominio.com/.well-known/assetlinks.json.
+
+O conteúdo do assetlinks.json deve seguir esta estrutura JSON:
+
+```json
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.seunome.seuapp",
+      "sha256_cert_fingerprints": [
+        "AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99:AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99:00",
+        "11:22:33:44:55:66:77:88:99:AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99:AA:BB:CC:DD:EE:FF:00"
+      ]
+    }
+  }
+]
+```
+
+- **package_name**: Altere "com.seunome.seuapp" para o ID do pacote real do seu aplicativo Android. Você o encontra no arquivo build.gradle (geralmente app/build.gradle), na seção android { defaultConfig { ... } }, como applicationId. Se o app estiver na Google Play Store, também pode ser encontrado lá.
+
+- **sha256_cert_fingerprints**: Substitua os exemplos pelas impressões digitais SHA256 dos certificados que assinam seu aplicativo. É fundamental incluir a SHA256 do certificado de depuração (debug) e, crucialmente, a do certificado de lançamento (release/produção).
+
+  - **Para Depuração**: No Android Studio, vá em Gradle -> [seu_projeto] -> Tasks -> android -> signingReport.
+
+  - **Para Lançamento**: Use `keytool -list -v -keystore /caminho/para/seu/arquivo.jks` no terminal. Se você usa o App Signing by Google Play, pegue a SHA256 na seção Configuração > Integridade do app no Google Play Console.
+
+- **Validação**: Após hospedar o arquivo, use a ferramenta [Digital Asset Links API Tester](https://developers.google.com/digital-asset-links/tools/generator) do Google para verificar se o `assetlinks.json` está acessível e formatado corretamente.
+
+##### Configuração no AndroidManifest.xml
+
+No arquivo `android/app/src/main/AndroidManifest.xml` do seu projeto React Native, adicione um intent-filter dentro da <activity> que deve lidar com os deep links (geralmente sua MainActivity):
+
+```xml
+<activity
+    android:name=".MainActivity"
+    android:exported="true"> <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+    </intent-filter>
+
+    <intent-filter android:autoVerify="true"> <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+          <data android:scheme="https"
+                android:host="seu-dominio.com"
+                android:pathPrefix="/app" />
+          <data android:scheme="https"
+              android:host="seu-dominio.com"
+              android:pathPrefix="/welcome" />
+      </intent-filter>
+
+</activity>
+```
+
+- `android:exported="true"`: Essencial para que sua Activity possa ser iniciada por links externos.
+
+- `android:autoVerify="true"`: Diz ao Android para verificar a associação com o `assetlinks.json` no seu servidor.
+
+- `android.intent.category.BROWSABLE`: Permite que o deep link seja invocado a partir de um navegador web.
+
+- `android:host`: O domínio exato (sem https:// ou /).
+
+- `android:pathPrefix`: O primeiro segmento do caminho da URL que seu app deve interceptar. O React Navigation fará o roteamento interno a partir daí.
+
+##### Configuração no React Native (com React Navigation)
+
+No seu código React Native, geralmente no arquivo **App.tsx** ou no seu componente de navegação principal (onde seu `NavigationContainer` está), configure o linking para mapear as URLs para as telas do seu app.
+O linking deve seguir o padrão de roteamento do seu projeto sendo que,se por exemplo tenha uma stack dentro de outra você deve navegar primeiro para a stack principal depois para a segunda stack e logo em seguida para o componente desejado.
+
+```js
+const linking = {
+  prefixes: ['https://seu-dominio.com', 'http://seu-domininio.com'], // Seus domínios
+  config: {
+    screens: {
+      WelcomeScreen: 'welcome', // Ex: https://seu-domininio.com/welcome
+      MainTabs: {
+        path: 'app', // Segmento da URL para o navegador de abas
+        screens: {
+          HomeTab: {
+            path: 'home', // Ex: https://seu-domininio.com/app/home
+            screens: {
+              // Telas dentro da HomeTab (se tiver Stack aninhada)
+            },
+          },
+        },
+      },
+      // ... outras rotas
+    },
+  },
+};
+```
+
+Apos configura seu liking basta adiciona-lo em seu NavigationContainer
+
+```jsx
+<NavigationContainer linking={linking}>
+  <MainStack.Screen name="WelcomeScreen" component={WelcomeScreen} />
+  <MainStack.Screen name="MainTabs" component={MainTabNavigator} />
+</NavigationContainer>
+```
+
+Após realizar essas configurações aconselho a esperar alguns minutos e também a deletar o aplicativo e rodar novamente com um --clean-cache
+
+Se tudo estiver configurado corretamente os links clicados referente ao seu aplicativo irão abrir ele ao invés do navegador caso ele esteja instalado
+
+### Gerenciamento de Episódios Offline
+
+Esta seção documenta como o aplicativo gerencia o download, o armazenamento e a exclusão de episódios de podcast para audição offline, utilizando a biblioteca react-native-fs.
+
+Estratégia de Armazenamento
+
+Para o armazenamento dos episódios, utilizamos o diretório RNFS.DocumentDirectoryPath. Esta é uma pasta privada (dentro da "sandbox") que cada aplicativo possui. A escolha por este diretório oferece duas grandes vantagens:
+
+- Sem Permissões Adicionais: Não é necessário solicitar permissões de escrita/leitura ao usuário nem configurar arquivos nativos (AndroidManifest.xml ou Info.plist).
+
+- Ciclo de Vida Gerenciado: Quando o usuário desinstala o aplicativo, o sistema operacional apaga automaticamente este diretório e todo o seu conteúdo, garantindo que nenhum lixo digital seja deixado no dispositivo.
+
+#### Configuração de Download
+
+```js
+import RNFS from 'react-native-fs';
+
+const audioUrl =
+  'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3';
+
+const fileName = 'audio_offline_1.mp3';
+
+const localFilePath = `${RNFS.DocumentDirectoryPath}/${fileName}`;
+
+export const downloadAudio = async () => {
+  try {
+    const fileExists = await RNFS.exists(localFilePath);
+    if (fileExists) {
+      console.log('O arquivo de áudio já existe localmente:', localFilePath);
+      return localFilePath;
+    }
+    const options = {
+      fromUrl: audioUrl,
+      toFile: localFilePath,
+      background: true,
+    };
+
+    const downloadResult = await RNFS.downloadFile(options).promise;
+
+    if (downloadResult.statusCode === 200) {
+      console.log('Download concluído com sucesso! Salvo em:', localFilePath);
+      return localFilePath;
+    } else {
+      console.error(
+        'Falha no download. Status Code:',
+        downloadResult.statusCode,
+      );
+      return null;
+    }
+  } catch (error) {
+    console.error('Erro ao baixar o arquivo:', error);
+    return null;
+  }
+};
+```
+
+> O codigo acima é um exemplo de uma função para realizar o download usando a biblioteca `react-native-fs`.
+
+**Pontos Importantes sobre as Opções de Download:**
+
+- **fromUrl**: A URL de origem do arquivo a ser baixado.
+
+- **toFile**: O caminho completo de destino no dispositivo onde o arquivo será salvo.
+
+- **background**: (Booleano) Se true, permite que o download continue mesmo que o aplicativo vá para segundo plano.
+
+- **Outros**: Existe a possibilidade de se passar funções para o options para por exemplo verificar a porcentagem do download. Caso coloque um metodo para lidar com o carregamento, coloque `progressDivider` para limitar o número de callBacks, para não travar o dispositivo.
+
+#### Exclusão de Mídia
+
+Para deletar um episódio baixado, removemos sua pasta dedicada. A função `RNFS.unlink(caminho)` é usada para isso, pois ela pode deletar tanto arquivos individuais quanto pastas inteiras com todo o seu conteúdo.
+Uma boa pratica é utilizar o `.exists()` para verificar se o caminho ou arquivo existe antes de deleta-lo.
+
+```js
+import RNFS from 'react-native-fs';
+
+const fileName = 'audio_offline_1.mp3';
+
+const localFilePath = `${RNFS.DocumentDirectoryPath}/${fileName}`;
+
+const deletarFaixaCompleta = async localFilePath => {
+  try {
+    const existe = await RNFS.exists(localFilePath);
+    if (!existe) {
+      console.log('Pasta da faixa não encontrada, nada a fazer.');
+      return;
+    }
+
+    await RNFS.unlink(localFilePath);
+    console.log(
+      'PASTA DA FAIXA E TODO O SEU CONTEÚDO FORAM DELETADOS:',
+      localFilePath,
+    );
+  } catch (error) {
+    console.error('Erro ao deletar a pasta da faixa:', error);
+  }
+};
+```
+
+### Atualizando o Nível da API do Android
+
+Para garantir a compatibilidade com as versões mais recentes do Android e cumprir os requisitos do [Google Play](https://support.google.com/googleplay/android-developer/answer/11926878), é necessário atualizar periodicamente o nível da API do aplicativo.
+
+Este guia descreve o processo de atualização da API 34 (Android 14) para a API 35 (Android 15), mas os princípios se aplicam a futuras atualizações.
+
+**Passo 1:** Modificar build.gradle
+
+O primeiro passo é informar ao Android que seu projeto será compilado e testado com a nova versão do SDK.
+
+1.  Abra o arquivo android/build.gradle.
+
+2.  Modifique os valores de compileSdkVersion e targetSdkVersion para 35.
+
+```groovy
+// Exemplo no arquivo android/build.gradle
+
+buildscript {
+    ext {
+        // ... outras configurações
+        compileSdkVersion = 35 // Mude de 34 para 35
+        targetSdkVersion = 35  // Mude de 34 para 35
+        // ...
+    }
+    // ...
+}
+```
+
+**Passo 2:** Adaptar-se às Mudanças de Comportamento
+
+Cada nova versão do Android introduz mudanças que podem afetar seu aplicativo. No Android 15, a mudança mais impactante é a interface Edge-to-Edge (Borda a Borda) ativada por padrão.
+
+Isso significa que o aplicativo ocupará a tela inteira, desenhando seu conteúdo por trás das barras de status (topo) e de navegação (embaixo). É crucial adaptar a UI para evitar que componentes fiquem sobrepostos ou inacessíveis.
+
+**Passo 3:** Limpar Cache e Testar
+
+Após realizar as modificações no código, é fundamental limpar o cache do Metro Bundler para garantir que as novas configurações nativas sejam carregadas corretamente.
+**1.** Rode um dos seguintes comandos no seu terminal:
+
+```bash
+npm run reset
+```
+
+**2.** Compile e rode o aplicativo no emulador ou dispositivo com Android 15.
+
+**3.** Verifique todas as telas, especialmente headers, footers e botões flutuantes, para garantir que não estão sendo sobrepostos pela barra de status ou de navegação.
+
+#### Ações Necessárias (Específico para React Native):
+
+Ajustar a UI com `react-native-safe-area-context`, use a essa biblioteca para lidar com as sobreposições, trocando a tag _SafeAreaView_ do `react-native` para o _SafeAreaView_ dessa biblioteca, pois ele fornece um padding automático para lidar como a sobreposição.
+
+- Para mais detalhes sobre as mudanças e requisitos, consulte a documentação oficial:
+  [Migrar para Android 15](https://developer.android.com/about/versions/15/migration?hl=pt-br)
