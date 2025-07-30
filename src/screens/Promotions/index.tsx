@@ -6,46 +6,75 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
-import { SearchNormal1 } from 'iconsax-react-native';
-import { useColorScheme } from 'nativewind';
-import { useEffect, useState } from 'react';
-import { Header } from '../../components/Header';
-import { getPromotions } from '../../services/api/get-promotions';
-import { isBefore, isEqual } from 'date-fns';
-import { PromotionsSkeleton } from './components';
+import {BottomTabNavigationProp} from '@react-navigation/bottom-tabs';
+import {SearchNormal1} from 'iconsax-react-native';
+import {useColorScheme} from 'nativewind';
+import {useEffect, useState} from 'react';
+import {Header} from '../../components/Header';
+import {getPromotions} from '../../services/api/get-promotions';
+import {isBefore, isEqual} from 'date-fns';
+import {PromotionsSkeleton} from './components';
+import {RefreshControl} from 'react-native';
 
 interface PromorionScreenProps {
   navigation: BottomTabNavigationProp<RootTabParamList>;
 }
 
-export const Promotions: React.FC<PromorionScreenProps> = ({ navigation }) => {
+export const Promotions: React.FC<PromorionScreenProps> = ({navigation}) => {
   const [input, setInput] = useState<string>('');
   const [data, setData] = useState<Promotiom[]>([]);
   const [filterData, setFilterData] = useState<Promotiom[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [refresh, setRefresh] = useState(false);
 
-  useEffect(() => {
-    getPromotions("1", undefined)
-      .then((response) => {
+  function refreshing() {
+    setRefresh(true);
+    setData([]);
+    setFilterData([]);
+    setIsLoading(true);
+    getPromotions('1', undefined)
+      .then(response => {
         const promotions = response.filter(item => {
           const endDate = new Date(item.endDate);
           const today = new Date();
-          const promotionFinished = isBefore(endDate, today) || isEqual(endDate, today);
+          const promotionFinished =
+            isBefore(endDate, today) || isEqual(endDate, today);
           if (item.isAd != true && promotionFinished == false) {
             return item;
           }
         });
-        setData(promotions)
-        setFilterData(promotions)
-        setIsLoading(false)
+        setData(promotions);
+        setFilterData(promotions);
+        setIsLoading(false);
       })
-      .catch((error) => {
-        console.log(error)
-      })
-  }, [])
+      .catch(error => {
+        console.log(error);
+      });
+    setRefresh(false);
+  }
 
-  const { colorScheme } = useColorScheme();
+  useEffect(() => {
+    getPromotions('1', undefined)
+      .then(response => {
+        const promotions = response.filter(item => {
+          const endDate = new Date(item.endDate);
+          const today = new Date();
+          const promotionFinished =
+            isBefore(endDate, today) || isEqual(endDate, today);
+          if (item.isAd != true && promotionFinished == false) {
+            return item;
+          }
+        });
+        setData(promotions);
+        setFilterData(promotions);
+        setIsLoading(false);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, []);
+
+  const {colorScheme} = useColorScheme();
 
   function goToSheetPromotion(promotiom: Promotiom) {
     navigation.navigate('SheetPromotion', {
@@ -61,37 +90,39 @@ export const Promotions: React.FC<PromorionScreenProps> = ({ navigation }) => {
     const promotions = filteredResult.filter(item => {
       const endDate = new Date(item.endDate);
       const today = new Date();
-      const promotionFinished = isBefore(endDate, today) || isEqual(endDate, today);
+      const promotionFinished =
+        isBefore(endDate, today) || isEqual(endDate, today);
       if (item.isAd != true && promotionFinished == false) {
         return item;
       }
-    })
+    });
     setFilterData(promotions);
     setInput(value);
   }
 
   function handlePaginationScrolling() {
-    const lastId = data[data.length - 1].id.toString()
-    getPromotions("1", lastId)
-      .then((response) => {
+    const lastId = data[data.length - 1].id.toString();
+    getPromotions('1', lastId)
+      .then(response => {
         if (!response) {
-          return
+          return;
         }
         const promotions = response.filter(item => {
           const endDate = new Date(item.endDate);
           const today = new Date();
-          const promotionFinished = isBefore(endDate, today) || isEqual(endDate, today);
+          const promotionFinished =
+            isBefore(endDate, today) || isEqual(endDate, today);
           if (item.isAd != true && promotionFinished == false) {
             return item;
           }
         });
-        const newsPromotions = [...data, ...promotions]
-        setData(newsPromotions)
-        setFilterData(newsPromotions)
+        const newsPromotions = [...data, ...promotions];
+        setData(newsPromotions);
+        setFilterData(newsPromotions);
       })
-      .catch((error) => {
-        console.log(error)
-      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   return (
@@ -116,37 +147,38 @@ export const Promotions: React.FC<PromorionScreenProps> = ({ navigation }) => {
             />
           </View>
         </View>
-        <View className="flex flex-col mb-[470px]">
-          {
-            isLoading
-              ?
-              <PromotionsSkeleton />
-              :
-              <FlatList
-                data={filterData}
-                showsVerticalScrollIndicator={false}
-                onEndReached={handlePaginationScrolling}
-                keyExtractor={filterData => filterData.id.toString()}
-                renderItem={({ item: promotiom }) => {
-                  return (
-                    <TouchableOpacity
-                      className="my-2"
-                      onPress={() => goToSheetPromotion(promotiom)}
-                      key={promotiom.id}>
-                      <Image
-                        className="h-32 rounded-t-md"
-                        source={{ uri: promotiom.imageUrl }}
-                      />
-                      <View className="relative flex flex-col px-2 py-3 space-y-2 bg-white rounded-b-lg dark:bg-background-darkLight">
-                        <Text className="text-sm font-Poppins-Medium text-neutral-700 dark:text-gray-200">
-                          {promotiom.title}
-                        </Text>
-                      </View>
-                    </TouchableOpacity>
-                  );
-                }}
-              />
-          }
+        <View className="flex flex-col mb-[550px]">
+          {isLoading ? (
+            <PromotionsSkeleton />
+          ) : (
+            <FlatList
+              data={filterData}
+              showsVerticalScrollIndicator={false}
+              onEndReached={handlePaginationScrolling}
+              refreshControl={
+                <RefreshControl refreshing={refresh} onRefresh={refreshing} />
+              }
+              keyExtractor={filterData => filterData.id.toString()}
+              renderItem={({item: promotiom}) => {
+                return (
+                  <TouchableOpacity
+                    className="my-2"
+                    onPress={() => goToSheetPromotion(promotiom)}
+                    key={promotiom.id}>
+                    <Image
+                      className="h-32 rounded-t-md"
+                      source={{uri: promotiom.imageUrl}}
+                    />
+                    <View className="relative flex flex-col px-2 py-3 space-y-2 bg-white rounded-b-lg dark:bg-background-darkLight">
+                      <Text className="text-sm font-Poppins-Medium text-neutral-700 dark:text-gray-200">
+                        {promotiom.title}
+                      </Text>
+                    </View>
+                  </TouchableOpacity>
+                );
+              }}
+            />
+          )}
         </View>
       </View>
     </View>
