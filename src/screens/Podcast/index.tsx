@@ -45,7 +45,7 @@ export const Podcast: React.FC<Podcast> = ({navigation}) => {
   return (
     <View className="items-center justify-start min-h-screen bg-background-light dark:bg-background-dark ">
       <Header />
-      <View className="flex-1 flex-col w-full  px-5 mt-5 space-y-3 mb-[255px]">
+      <View className="flex-1 flex-col w-full  px-5 mt-5 space-y-3 mb-[190px]">
         <ScrollView
           showsVerticalScrollIndicator={false}
           refreshControl={

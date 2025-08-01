@@ -7,6 +7,7 @@ import {
   Image,
   FlatList,
   ActivityIndicator,
+  ScrollView,
 } from 'react-native';
 import React, {useCallback, useEffect, useState} from 'react';
 import {useColorScheme} from 'nativewind';
@@ -17,8 +18,6 @@ import {
   VideoSquare,
   UserSquare,
   Timer1,
-  ArrowSquareDown,
-  ArrowSquareUp,
   TickCircle,
 } from 'iconsax-react-native';
 import RNFS from 'react-native-fs';
@@ -40,8 +39,6 @@ export const Episodes: React.FC<EpisodesProps> = ({navigation, route}) => {
   const [input, setInput] = useState('');
   const [isFocus, setIsFocus] = useState(false);
   const [isLoaded, setLoaded] = useState(true);
-  const [showChannel, setShowChanel] = useState(true);
-  const [marginFlat, setMarginFlat] = useState('mb-[337px]');
   const [idList, setIdList] = useState<string[]>([]);
   const [data, setData] = useState<Episode[]>([]);
   const [filter, setFilter] = useState<Episode[]>([]);
@@ -68,23 +65,15 @@ export const Episodes: React.FC<EpisodesProps> = ({navigation, route}) => {
     setInput(value);
   }
 
-  function handleShowChannel() {
-    setShowChanel(!showChannel);
-    setMarginFlat('mb-[307px]');
-    if (showChannel) {
-      setMarginFlat('');
-    }
-  }
-
   function handlePaginationScrolling() {
     episodePagination();
   }
 
   async function isDownload(id: string) {
     try {
-      const localPath = `${
-        RNFS.DocumentDirectoryPath
-      }/episodeOffline${md5(id).toString()}.mp3`;
+      const localPath = `${RNFS.DocumentDirectoryPath}/episodeOffline${md5(
+        id,
+      ).toString()}.mp3`;
       const result = await RNFS.exists(localPath);
       if (result) {
         setIdList(oldId => [...oldId, id]);
@@ -186,15 +175,9 @@ export const Episodes: React.FC<EpisodesProps> = ({navigation, route}) => {
           </View>
         </View>
       </View>
-      <View className="flex flex-col  w-full mb-[630px] px-2 ">
+      <View className="flex flex-col  w-full  px-2 ">
         {isLoaded ? (
           <>
-            <View className="flex flex-row items-center justify-center w-full max-w-full p-3 space-x-2 bg-white rounded-md dark:bg-background-darkLight mt-2 ">
-              <View className="flex w-28 h-28 items-center justify-center">
-                <ActivityIndicator size="large" color={'#505059'} />
-              </View>
-            </View>
-
             <View className="flex flex-row items-center w-full max-w-full p-3 space-x-2 bg-white rounded-md dark:bg-background-darkLight mt-2">
               <View className="flex items-center justify-center w-full h-20">
                 <ActivityIndicator size="large" color={'#505059'} />
@@ -211,74 +194,14 @@ export const Episodes: React.FC<EpisodesProps> = ({navigation, route}) => {
               </View>
             </View>
           </>
-        ) : showChannel ? (
-          <View className="flex flex-row items-center  w-full max-w-full p-3 space-x-2 bg-white rounded-md dark:bg-background-darkLight mt-2 ">
-            <View className="w-28 h-28 ">
-              <Image
-                className="w-full h-full rounded-3xl"
-                source={{
-                  uri: image,
-                }}
-              />
-            </View>
-            <View className="flex flex-col flex-1  gap-y-4 w-full items-center justify-center ">
-              <View className="flex justify-center  ">
-                <Text numberOfLines={2}>{title}</Text>
-              </View>
-              <Text
-                numberOfLines={2}
-                className="text-xs text-justify text-gray-500 font-Poppins-Medium dark:text-gray-200">
-                {description}
-              </Text>
-              <View className="flex flex-row justify-evenly w-2/3 ">
-                <View className="flex flex-row justify-start items-center">
-                  <VideoSquare
-                    size="12"
-                    color={colorScheme === 'dark' ? 'gray' : 'black'}
-                  />
-                  <Text
-                    numberOfLines={1}
-                    className="text-xs text-justify text-gray-500 font-Poppins-Medium dark:text-gray-200">
-                    {episodes}
-                  </Text>
-                </View>
-                <View className="flex flex-row justify-start items-center">
-                  <UserSquare
-                    size="12"
-                    color={colorScheme === 'dark' ? 'gray' : 'black'}
-                  />
-                  <Text
-                    numberOfLines={1}
-                    className="text-xs text-justify text-gray-500 font-Poppins-Medium dark:text-gray-200">
-                    : {auth}
-                  </Text>
-                </View>
-              </View>
-              <View>
-                <TouchableOpacity onPress={handleShowChannel}>
-                  <ArrowSquareUp
-                    size={22}
-                    className="text-xs font-Poppins-Regular text-base-primary"
-                  />
-                </TouchableOpacity>
-              </View>
-            </View>
-          </View>
         ) : (
-          <View className="flex flex-row items-center justify-center w-full max-w-full p-3 space-x-2 bg-white rounded-md dark:bg-background-darkLight mt-2 ">
-            <TouchableOpacity onPress={handleShowChannel}>
-              <ArrowSquareDown
-                size={22}
-                className="text-xs font-Poppins-Regular text-base-primary"
-              />
-            </TouchableOpacity>
-          </View>
+          <></>
         )}
         {
           <FlatList
-            showsVerticalScrollIndicator={false}
             data={filter}
-            className={marginFlat}
+            className="mb-[450px]"
+          showsVerticalScrollIndicator={false}
             onEndReached={handlePaginationScrolling}
             onEndReachedThreshold={0.5}
             keyExtractor={item => item.id.toString()}
@@ -286,9 +209,7 @@ export const Episodes: React.FC<EpisodesProps> = ({navigation, route}) => {
               return (
                 <TouchableOpacity
                   className="flex flex-row items-center w-full max-w-full mt-2 p-3 space-x-2 bg-white rounded-md dark:bg-background-darkLight"
-                  onPress={() => {
-                    goToSheetEpisode(item);
-                  }}>
+                  onPress={() => goToSheetEpisode(item)}>
                   <View className="w-20 h-20">
                     <Image
                       className="w-full h-full rounded-md"
@@ -300,17 +221,17 @@ export const Episodes: React.FC<EpisodesProps> = ({navigation, route}) => {
                   <View className="flex flex-col flex-1 gap-y-2">
                     <View>
                       <Text
-                        className="text-xs text-justify text-gray-500 font-Poppins-Medium dark:text-gray-200"
-                        numberOfLines={2}>
+                        numberOfLines={2}
+                        className="text-xs text-justify text-gray-500 font-Poppins-Medium dark:text-gray-200">
                         {item.title}
                       </Text>
                     </View>
                     <RenderHtml
-                      baseStyle={htmlColor}
                       contentWidth={width}
+                      baseStyle={htmlColor}
                       source={{html: item.summary}}
                     />
-                    <View className="flex flex-row justify-start">
+                    <View className="flex flex-row justify-between">
                       <View className="flex flex-row justify-start items-center">
                         <Timer1
                           size="12"
@@ -322,11 +243,17 @@ export const Episodes: React.FC<EpisodesProps> = ({navigation, route}) => {
                           : {item.duration}
                         </Text>
                       </View>
+                      <Text
+                        numberOfLines={1}
+                        className="text-xs text-justify text-gray-500 font-Poppins-Medium dark:text-gray-200">
+                        {item.auth}
+                      </Text>
                     </View>
+
                     <TickCircle
                       size={12}
                       color={
-                        idList.includes(item.id.toString())
+                        idList.includes(item.id)
                           ? 'blue'
                           : colorScheme === 'dark'
                           ? 'gray'
