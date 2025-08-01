@@ -8,19 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* AudieTemplateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* AudieTemplateTests.m */; };
-		0C80B921A6F3F58F76C31292 /* libPods-AudieTemplate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-AudieTemplate.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		7699B88040F8A987B510C191 /* libPods-AudieTemplate-AudieTemplateTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-AudieTemplate-AudieTemplateTests.a */; };
-		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		66643DEB1FD94D4E9E3AA381 /* Poppins-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1E1EB6AFD8A64D9995311061 /* Poppins-ExtraLight.otf */; };
-		D085A0B482DC4F59AD5C1BCC /* Poppins-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = D8D56F0DFCE84FCB8D3EB69B /* Poppins-Light.otf */; };
 		16B7F197D4A94EC89C8516BF /* Poppins-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = C2B4518844A346118E015146 /* Poppins-Medium.otf */; };
-		36E2B4A8671140F69E950E26 /* Poppins-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 210E63AF7F93425D90656AB6 /* Poppins-Regular.otf */; };
-		FD1C37A26F1B411AB66AA130 /* Poppins-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 69F9C08D55AA484F9441856A /* Poppins-SemiBold.otf */; };
-		E6537FE9C6874798B0D1DC14 /* Poppins-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = A272E511AA58445CBAB50703 /* Poppins-Thin.otf */; };
 		272A09AC4ADC492EB69A35FD /* QuickExpress.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AD67C5C563774790B55C6033 /* QuickExpress.ttf */; };
+		29294E5BEF3C66B257196464 /* libPods-AudieTemplate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A579562DF04734FCD7419A4 /* libPods-AudieTemplate.a */; };
+		36E2B4A8671140F69E950E26 /* Poppins-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 210E63AF7F93425D90656AB6 /* Poppins-Regular.otf */; };
+		66643DEB1FD94D4E9E3AA381 /* Poppins-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1E1EB6AFD8A64D9995311061 /* Poppins-ExtraLight.otf */; };
+		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		D085A0B482DC4F59AD5C1BCC /* Poppins-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = D8D56F0DFCE84FCB8D3EB69B /* Poppins-Light.otf */; };
+		E6537FE9C6874798B0D1DC14 /* Poppins-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = A272E511AA58445CBAB50703 /* Poppins-Thin.otf */; };
+		F1EA689316054D918026FF1B /* libPods-AudieTemplate-AudieTemplateTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F64C52AA7D99186CCB40E3C8 /* libPods-AudieTemplate-AudieTemplateTests.a */; };
+		FD1C37A26F1B411AB66AA130 /* Poppins-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 69F9C08D55AA484F9441856A /* Poppins-SemiBold.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,27 +37,28 @@
 		00E356EE1AD99517003FC87E /* AudieTemplateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AudieTemplateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* AudieTemplateTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AudieTemplateTests.m; sourceTree = "<group>"; };
+		0A579562DF04734FCD7419A4 /* libPods-AudieTemplate.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AudieTemplate.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07F961A680F5B00A75B9A /* AudieTemplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AudieTemplate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = AudieTemplate/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = AudieTemplate/AppDelegate.mm; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = AudieTemplate/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = AudieTemplate/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = AudieTemplate/main.m; sourceTree = "<group>"; };
-		19F6CBCC0A4E27FBF8BF4A61 /* libPods-AudieTemplate-AudieTemplateTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AudieTemplate-AudieTemplateTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3B4392A12AC88292D35C810B /* Pods-AudieTemplate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudieTemplate.debug.xcconfig"; path = "Target Support Files/Pods-AudieTemplate/Pods-AudieTemplate.debug.xcconfig"; sourceTree = "<group>"; };
-		5709B34CF0A7D63546082F79 /* Pods-AudieTemplate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudieTemplate.release.xcconfig"; path = "Target Support Files/Pods-AudieTemplate/Pods-AudieTemplate.release.xcconfig"; sourceTree = "<group>"; };
-		5B7EB9410499542E8C5724F5 /* Pods-AudieTemplate-AudieTemplateTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudieTemplate-AudieTemplateTests.debug.xcconfig"; path = "Target Support Files/Pods-AudieTemplate-AudieTemplateTests/Pods-AudieTemplate-AudieTemplateTests.debug.xcconfig"; sourceTree = "<group>"; };
-		5DCACB8F33CDC322A6C60F78 /* libPods-AudieTemplate.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AudieTemplate.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E1EB6AFD8A64D9995311061 /* Poppins-ExtraLight.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = file; name = "Poppins-ExtraLight.otf"; path = "../../AudieMobile/src/assets/fonts/Poppins-ExtraLight.otf"; sourceTree = "<group>"; };
+		210E63AF7F93425D90656AB6 /* Poppins-Regular.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = file; name = "Poppins-Regular.otf"; path = "../../AudieMobile/src/assets/fonts/Poppins-Regular.otf"; sourceTree = "<group>"; };
+		69F9C08D55AA484F9441856A /* Poppins-SemiBold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = file; name = "Poppins-SemiBold.otf"; path = "../../AudieMobile/src/assets/fonts/Poppins-SemiBold.otf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = AudieTemplate/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		89C6BE57DB24E9ADA2F236DE /* Pods-AudieTemplate-AudieTemplateTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudieTemplate-AudieTemplateTests.release.xcconfig"; path = "Target Support Files/Pods-AudieTemplate-AudieTemplateTests/Pods-AudieTemplate-AudieTemplateTests.release.xcconfig"; sourceTree = "<group>"; };
+		869A8DDD8AC9ED5F3ABCF3E0 /* Pods-AudieTemplate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudieTemplate.debug.xcconfig"; path = "Target Support Files/Pods-AudieTemplate/Pods-AudieTemplate.debug.xcconfig"; sourceTree = "<group>"; };
+		8BA7F66D9E06C55E05703734 /* Pods-AudieTemplate-AudieTemplateTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudieTemplate-AudieTemplateTests.debug.xcconfig"; path = "Target Support Files/Pods-AudieTemplate-AudieTemplateTests/Pods-AudieTemplate-AudieTemplateTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A272E511AA58445CBAB50703 /* Poppins-Thin.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = file; name = "Poppins-Thin.otf"; path = "/Users/playlist/Documents/_Dev/AudieMobile/src/assets/fonts/Poppins-Thin.otf"; sourceTree = "<absolute>"; };
+		A40D724A0195DA29CC9BCCCE /* Pods-AudieTemplate-AudieTemplateTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudieTemplate-AudieTemplateTests.release.xcconfig"; path = "Target Support Files/Pods-AudieTemplate-AudieTemplateTests/Pods-AudieTemplate-AudieTemplateTests.release.xcconfig"; sourceTree = "<group>"; };
+		AD67C5C563774790B55C6033 /* QuickExpress.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = file; name = QuickExpress.ttf; path = ../../AudieMobile/src/assets/fonts/QuickExpress.ttf; sourceTree = "<group>"; };
+		B5DCE16A81AE7A5B34C1FDFA /* Pods-AudieTemplate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudieTemplate.release.xcconfig"; path = "Target Support Files/Pods-AudieTemplate/Pods-AudieTemplate.release.xcconfig"; sourceTree = "<group>"; };
+		C2B4518844A346118E015146 /* Poppins-Medium.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = file; name = "Poppins-Medium.otf"; path = "../../AudieMobile/src/assets/fonts/Poppins-Medium.otf"; sourceTree = "<group>"; };
+		D8D56F0DFCE84FCB8D3EB69B /* Poppins-Light.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = file; name = "Poppins-Light.otf"; path = "../../AudieMobile/src/assets/fonts/Poppins-Light.otf"; sourceTree = "<group>"; };
+		DE3B42CC2E3BC8AD00378853 /* AudieTemplate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = AudieTemplate.entitlements; path = AudieTemplate/AudieTemplate.entitlements; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
-		1E1EB6AFD8A64D9995311061 /* Poppins-ExtraLight.otf */ = {isa = PBXFileReference; name = "Poppins-ExtraLight.otf"; path = "../assets/fonts/Poppins-ExtraLight.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		D8D56F0DFCE84FCB8D3EB69B /* Poppins-Light.otf */ = {isa = PBXFileReference; name = "Poppins-Light.otf"; path = "../assets/fonts/Poppins-Light.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		C2B4518844A346118E015146 /* Poppins-Medium.otf */ = {isa = PBXFileReference; name = "Poppins-Medium.otf"; path = "../assets/fonts/Poppins-Medium.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		210E63AF7F93425D90656AB6 /* Poppins-Regular.otf */ = {isa = PBXFileReference; name = "Poppins-Regular.otf"; path = "../assets/fonts/Poppins-Regular.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		69F9C08D55AA484F9441856A /* Poppins-SemiBold.otf */ = {isa = PBXFileReference; name = "Poppins-SemiBold.otf"; path = "../assets/fonts/Poppins-SemiBold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		A272E511AA58445CBAB50703 /* Poppins-Thin.otf */ = {isa = PBXFileReference; name = "Poppins-Thin.otf"; path = "../assets/fonts/Poppins-Thin.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		AD67C5C563774790B55C6033 /* QuickExpress.ttf */ = {isa = PBXFileReference; name = "QuickExpress.ttf"; path = "../assets/fonts/QuickExpress.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F64C52AA7D99186CCB40E3C8 /* libPods-AudieTemplate-AudieTemplateTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AudieTemplate-AudieTemplateTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7699B88040F8A987B510C191 /* libPods-AudieTemplate-AudieTemplateTests.a in Frameworks */,
+				F1EA689316054D918026FF1B /* libPods-AudieTemplate-AudieTemplateTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,7 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C80B921A6F3F58F76C31292 /* libPods-AudieTemplate.a in Frameworks */,
+				29294E5BEF3C66B257196464 /* libPods-AudieTemplate.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +101,7 @@
 		13B07FAE1A68108700A75B9A /* AudieTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				DE3B42CC2E3BC8AD00378853 /* AudieTemplate.entitlements */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -114,10 +116,24 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				5DCACB8F33CDC322A6C60F78 /* libPods-AudieTemplate.a */,
-				19F6CBCC0A4E27FBF8BF4A61 /* libPods-AudieTemplate-AudieTemplateTests.a */,
+				0A579562DF04734FCD7419A4 /* libPods-AudieTemplate.a */,
+				F64C52AA7D99186CCB40E3C8 /* libPods-AudieTemplate-AudieTemplateTests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		71770EF3C10E406F902348DF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1E1EB6AFD8A64D9995311061 /* Poppins-ExtraLight.otf */,
+				D8D56F0DFCE84FCB8D3EB69B /* Poppins-Light.otf */,
+				C2B4518844A346118E015146 /* Poppins-Medium.otf */,
+				210E63AF7F93425D90656AB6 /* Poppins-Regular.otf */,
+				69F9C08D55AA484F9441856A /* Poppins-SemiBold.otf */,
+				A272E511AA58445CBAB50703 /* Poppins-Thin.otf */,
+				AD67C5C563774790B55C6033 /* QuickExpress.ttf */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -155,28 +171,13 @@
 		BBD78D7AC51CEA395F1C20DB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3B4392A12AC88292D35C810B /* Pods-AudieTemplate.debug.xcconfig */,
-				5709B34CF0A7D63546082F79 /* Pods-AudieTemplate.release.xcconfig */,
-				5B7EB9410499542E8C5724F5 /* Pods-AudieTemplate-AudieTemplateTests.debug.xcconfig */,
-				89C6BE57DB24E9ADA2F236DE /* Pods-AudieTemplate-AudieTemplateTests.release.xcconfig */,
+				869A8DDD8AC9ED5F3ABCF3E0 /* Pods-AudieTemplate.debug.xcconfig */,
+				B5DCE16A81AE7A5B34C1FDFA /* Pods-AudieTemplate.release.xcconfig */,
+				8BA7F66D9E06C55E05703734 /* Pods-AudieTemplate-AudieTemplateTests.debug.xcconfig */,
+				A40D724A0195DA29CC9BCCCE /* Pods-AudieTemplate-AudieTemplateTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
-		};
-		71770EF3C10E406F902348DF /* Resources */ = {
-			isa = "PBXGroup";
-			children = (
-				1E1EB6AFD8A64D9995311061 /* Poppins-ExtraLight.otf */,
-				D8D56F0DFCE84FCB8D3EB69B /* Poppins-Light.otf */,
-				C2B4518844A346118E015146 /* Poppins-Medium.otf */,
-				210E63AF7F93425D90656AB6 /* Poppins-Regular.otf */,
-				69F9C08D55AA484F9441856A /* Poppins-SemiBold.otf */,
-				A272E511AA58445CBAB50703 /* Poppins-Thin.otf */,
-				AD67C5C563774790B55C6033 /* QuickExpress.ttf */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-			path = "";
 		};
 /* End PBXGroup section */
 
@@ -185,12 +186,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "AudieTemplateTests" */;
 			buildPhases = (
-				A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */,
+				0CBE0A97C9B7AA95810D6CA7 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */,
-				F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */,
+				8907BCFC4959925AFB7432FD /* [CP] Embed Pods Frameworks */,
+				43A514312BB630A169C3A32F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -206,13 +207,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "AudieTemplate" */;
 			buildPhases = (
-				C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */,
+				A82121E06644C3EAE836C196 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */,
-				E235C05ADACE081382539298 /* [CP] Copy Pods Resources */,
+				B179BBC4BA09F38E399C811A /* [CP] Embed Pods Frameworks */,
+				068C64172DDB7FC34B1365A6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -302,24 +303,24 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nWITH_ENVIRONMENT=\"../node_modules/react-native/scripts/xcode/with-environment.sh\"\nREACT_NATIVE_XCODE=\"../node_modules/react-native/scripts/react-native-xcode.sh\"\n\n/bin/sh -c \"$WITH_ENVIRONMENT $REACT_NATIVE_XCODE\"\n";
 		};
-		00EEFC60759A1932668264C0 /* [CP] Embed Pods Frameworks */ = {
+		068C64172DDB7FC34B1365A6 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AudieTemplate/Pods-AudieTemplate-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-AudieTemplate/Pods-AudieTemplate-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AudieTemplate/Pods-AudieTemplate-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-AudieTemplate/Pods-AudieTemplate-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AudieTemplate/Pods-AudieTemplate-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AudieTemplate/Pods-AudieTemplate-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A55EABD7B0C7F3A422A6CC61 /* [CP] Check Pods Manifest.lock */ = {
+		0CBE0A97C9B7AA95810D6CA7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -341,7 +342,41 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C38B50BA6285516D6DCD4F65 /* [CP] Check Pods Manifest.lock */ = {
+		43A514312BB630A169C3A32F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AudieTemplate-AudieTemplateTests/Pods-AudieTemplate-AudieTemplateTests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AudieTemplate-AudieTemplateTests/Pods-AudieTemplate-AudieTemplateTests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AudieTemplate-AudieTemplateTests/Pods-AudieTemplate-AudieTemplateTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8907BCFC4959925AFB7432FD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AudieTemplate-AudieTemplateTests/Pods-AudieTemplate-AudieTemplateTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AudieTemplate-AudieTemplateTests/Pods-AudieTemplate-AudieTemplateTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AudieTemplate-AudieTemplateTests/Pods-AudieTemplate-AudieTemplateTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A82121E06644C3EAE836C196 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -363,55 +398,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C59DA0FBD6956966B86A3779 /* [CP] Embed Pods Frameworks */ = {
+		B179BBC4BA09F38E399C811A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AudieTemplate-AudieTemplateTests/Pods-AudieTemplate-AudieTemplateTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-AudieTemplate/Pods-AudieTemplate-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AudieTemplate-AudieTemplateTests/Pods-AudieTemplate-AudieTemplateTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-AudieTemplate/Pods-AudieTemplate-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AudieTemplate-AudieTemplateTests/Pods-AudieTemplate-AudieTemplateTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E235C05ADACE081382539298 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AudieTemplate/Pods-AudieTemplate-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AudieTemplate/Pods-AudieTemplate-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AudieTemplate/Pods-AudieTemplate-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F6A41C54EA430FDDC6A6ED99 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AudieTemplate-AudieTemplateTests/Pods-AudieTemplate-AudieTemplateTests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AudieTemplate-AudieTemplateTests/Pods-AudieTemplate-AudieTemplateTests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AudieTemplate-AudieTemplateTests/Pods-AudieTemplate-AudieTemplateTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AudieTemplate/Pods-AudieTemplate-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -447,7 +448,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-AudieTemplate-AudieTemplateTests.debug.xcconfig */;
+			baseConfigurationReference = 8BA7F66D9E06C55E05703734 /* Pods-AudieTemplate-AudieTemplateTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -474,7 +475,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-AudieTemplate-AudieTemplateTests.release.xcconfig */;
+			baseConfigurationReference = A40D724A0195DA29CC9BCCCE /* Pods-AudieTemplate-AudieTemplateTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -498,11 +499,13 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B4392A12AC88292D35C810B /* Pods-AudieTemplate.debug.xcconfig */;
+			baseConfigurationReference = 869A8DDD8AC9ED5F3ABCF3E0 /* Pods-AudieTemplate.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = AudieTemplate/AudieTemplate.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QX275EL9NU;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = AudieTemplate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -515,7 +518,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.playlistsolutions.audietemplate;
 				PRODUCT_NAME = AudieTemplate;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -525,11 +528,13 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5709B34CF0A7D63546082F79 /* Pods-AudieTemplate.release.xcconfig */;
+			baseConfigurationReference = B5DCE16A81AE7A5B34C1FDFA /* Pods-AudieTemplate.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = AudieTemplate/AudieTemplate.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = QX275EL9NU;
 				INFOPLIST_FILE = AudieTemplate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -541,7 +546,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.playlistsolutions.audietemplate;
 				PRODUCT_NAME = AudieTemplate;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -581,7 +586,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -609,6 +614,7 @@
 				);
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "$(inherited)";
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-DFOLLY_NO_CONFIG",
@@ -616,7 +622,10 @@
 					"-DFOLLY_USE_LIBCPP=1",
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 				);
+				OTHER_LDFLAGS = "$(inherited)  ";
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
+				USE_HERMES = true;
 			};
 			name = Debug;
 		};
@@ -653,7 +662,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -673,6 +682,7 @@
 					"\"$(inherited)\"",
 				);
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_CFLAGS = "$(inherited)";
 				OTHER_CPLUSPLUSFLAGS = (
 					"$(OTHER_CFLAGS)",
 					"-DFOLLY_NO_CONFIG",
@@ -680,7 +690,10 @@
 					"-DFOLLY_USE_LIBCPP=1",
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 				);
+				OTHER_LDFLAGS = "$(inherited)  ";
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
+				USE_HERMES = true;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
