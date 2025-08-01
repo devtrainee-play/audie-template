@@ -315,6 +315,119 @@ No arquivo `android/app/src/main/AndroidManifest.xml` do seu projeto React Nativ
 
 - `android:pathPrefix`: O primeiro segmento do caminho da URL que seu app deve interceptar. O React Navigation fará o roteamento interno a partir daí.
 
+#### iOS (Universal Links)
+
+Para iOS, o processo equivalente é chamado de Universal Links e também exige uma associação segura entre o domínio e o aplicativo.
+
+##### 1. Configuração do Servidor Web (Arquivo AASA)
+
+Crie um arquivo chamado `apple-app-site-association` (sem extensão `.json`) e coloque-o no diretório `/.well-known/` do seu servidor. O caminho final deve ser: `https://seu-dominio.com/.well-known/apple-app-site-association`.
+
+O conteúdo do arquivo deve ser um JSON com a seguinte estrutura:
+
+```json
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "ABCDE12345.com.seunome.seuapp",
+        "paths": ["/welcome", "/app/*", "/ep/*"]
+      }
+    ]
+  }
+}
+```
+
+- **`appID`**: É a junção do seu **Team ID** + **Bundle ID**. Você encontra ambos na aba `Signing & Capabilities` do seu target no Xcode.
+- **`paths`**: Uma lista dos caminhos que devem abrir seu app. Use `*` como coringa.
+
+##### Requisitos do Servidor
+
+- O arquivo deve ser servido via **HTTPS**.
+- Não pode haver redirecionamentos para o arquivo.
+- **`Content-Type`**: O cabeçalho da resposta **deve ser `application/json`**. Caso o `Content-Type` venha diferente procure como mudar no seu servidor.
+- **Validação**: Use validadores online como o [AASA Validator da Branch.io](https://branch.io/resources/aasa-validator/) para verificar se seu servidor está configurado corretamente.
+
+##### 2. Configuração no Xcode
+
+1. Abra seu projeto (`.xcworkspace`) no Xcode.
+2. Selecione o seu **Target** principal.
+3. Vá para a aba **`Signing & Capabilities`**.
+4. Clique em **`+ Capability`** e adicione **`Associated Domains`**.
+5. Na nova seção, adicione seu domínio com o prefixo `applinks:`. Exemplo: `applinks:seu-dominio.com` (sem `https://`).
+
+   - ✅ **Formato Correto:** `applinks:seu-dominio.com`
+   - ❌ **Formato Incorreto:** `applinks:https://seu-dominio.com`
+
+Se você precisar dar suporte a subdomínios, como `www`, adicione uma nova entrada para cada um. Exemplo:
+
+- `applinks:seu-dominio.com`
+- `applinks:www.seu-dominio.com`
+
+##### 3. Configuração no Código Nativo (`AppDelegate`)
+
+Para que o React Native receba o evento do clique no link, você precisa adicionar um código nativo no seu `AppDelegate`. Escolha a versão correspondente à linguagem do seu projeto (Objective-C ou Swift).
+
+##### Opção A: Se seu projeto usa Objective-C (`AppDelegate.m`)
+
+Adicione o seguinte código ao seu arquivo `ios/[NomeDoProjeto]/AppDelegate.m`:
+
+```objectivec
+// No início do arquivo
+#import <React/RCTLinkingManager.h>
+
+// Dentro da implementação @implementation AppDelegate
+
+// Para Universal Links
+- (BOOL)application:(UIApplication *)application
+continueUserActivity:(nonnull NSUserActivity *)userActivity
+ restorationHandler:(nonnull void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler
+{
+ return [RCTLinkingManager application:application
+                  continueUserActivity:userActivity
+                    restorationHandler:restorationHandler];
+}
+
+// Para links de apps de terceiros e custom schemes
+- (BOOL)application:(UIApplication *)application
+   openURL:(NSURL *)url
+   options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
+{
+  return [RCTLinkingManager application:application openURL:url options:options];
+}
+```
+
+---
+
+##### Opção B: Se seu projeto usa Swift (`AppDelegate.swift`)
+
+Se o seu projeto utiliza Swift, o arquivo a ser modificado será o `AppDelegate.swift`. O código é equivalente e tem a mesma função de encaminhar os eventos de link para o React Native.
+
+```swift
+// No início do arquivo, garanta que o React está importado
+import React
+
+// Dentro da classe AppDelegate
+
+// Para Universal Links
+override func application(
+  _ application: UIApplication,
+  continue userActivity: NSUserActivity,
+  restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+    return RCTLinkingManager.application(
+      application,
+      continue: userActivity,
+      restorationHandler: restorationHandler
+    )
+}
+
+// Para links de apps de terceiros e custom schemes
+override func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+  return RCTLinkingManager.application(app, open: url, options: options)
+}
+```
+
 ##### Configuração no React Native (com React Navigation)
 
 No seu código React Native, geralmente no arquivo **App.tsx** ou no seu componente de navegação principal (onde seu `NavigationContainer` está), configure o linking para mapear as URLs para as telas do seu app.
