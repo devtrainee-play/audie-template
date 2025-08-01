@@ -176,7 +176,7 @@ export const Episodes: React.FC<EpisodesProps> = ({navigation, route}) => {
         </View>
       </View>
       <View className="flex flex-col  w-full  px-2 ">
-        {isLoaded ? (
+        {isLoaded && (
           <>
             <View className="flex flex-row items-center w-full max-w-full p-3 space-x-2 bg-white rounded-md dark:bg-background-darkLight mt-2">
               <View className="flex items-center justify-center w-full h-20">
@@ -194,14 +194,12 @@ export const Episodes: React.FC<EpisodesProps> = ({navigation, route}) => {
               </View>
             </View>
           </>
-        ) : (
-          <></>
         )}
         {
           <FlatList
             data={filter}
             className="mb-[450px]"
-          showsVerticalScrollIndicator={false}
+            showsVerticalScrollIndicator={false}
             onEndReached={handlePaginationScrolling}
             onEndReachedThreshold={0.5}
             keyExtractor={item => item.id.toString()}
